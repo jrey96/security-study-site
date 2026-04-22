@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SY0-701 Security+ Study Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="brand">
+      <svg class="brand-icon" viewBox="0 0 64 64" aria-hidden="true">
+        <defs>
+          <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#22d3ee" />
+            <stop offset="100%" stop-color="#a78bfa" />
+          </linearGradient>
+        </defs>
+        <path fill="url(#shieldGrad)" d="M32 4L8 14v18c0 14 10 26 24 30 14-4 24-16 24-30V14L32 4z" opacity="0.9" />
+        <path fill="#0f172a" d="M32 12L16 19v11c0 9 6 17 16 20 10-3 16-11 16-20V19L32 12z" />
+        <path fill="#22d3ee" d="M28 26h8v4h-8v-4zm0 8h8v4h-8v-4z" opacity="0.85" />
+      </svg>
+      <div>
+        <h1>SY0-701 Study Lab</h1>
+        <p class="tagline">CompTIA Security+ (SY0-701) — five blueprint domains, visuals, and hands-on drills</p>
+      </div>
+    </div>
+    <nav class="nav" aria-label="Main">
+      <a href="#domains">Domains</a>
+      <a href="#labs">Labs</a>
+      <a href="#cheatsheet">Cheat sheet</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="hero-graphic" aria-hidden="true">
+        <svg viewBox="0 0 400 220" class="network-svg">
+          <defs>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="2" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+          <rect x="0" y="0" width="400" height="220" fill="none" />
+          <!-- nodes -->
+          <g class="pulse-node">
+            <circle cx="60" cy="110" r="22" fill="#1e293b" stroke="#22d3ee" stroke-width="2" filter="url(#glow)" />
+            <text x="60" y="115" text-anchor="middle" fill="#e2e8f0" font-size="11" font-family="JetBrains Mono, monospace">DMZ</text>
+          </g>
+          <circle cx="200" cy="50" r="24" fill="#1e293b" stroke="#a78bfa" stroke-width="2" />
+          <text x="200" y="55" text-anchor="middle" fill="#e2e8f0" font-size="11" font-family="JetBrains Mono, monospace">FW</text>
+          <circle cx="340" cy="110" r="22" fill="#1e293b" stroke="#34d399" stroke-width="2" />
+          <text x="340" y="115" text-anchor="middle" fill="#e2e8f0" font-size="11" font-family="JetBrains Mono, monospace">LAN</text>
+          <circle cx="200" cy="170" r="22" fill="#1e293b" stroke="#f472b6" stroke-width="2" />
+          <text x="200" y="175" text-anchor="middle" fill="#e2e8f0" font-size="11" font-family="JetBrains Mono, monospace">IDS</text>
+          <!-- links -->
+          <line x1="82" y1="110" x2="176" y2="60" stroke="#334155" stroke-width="2" />
+          <line x1="224" y1="60" x2="318" y2="110" stroke="#334155" stroke-width="2" />
+          <line x1="200" y1="74" x2="200" y2="148" stroke="#334155" stroke-width="2" />
+          <line x1="176" y1="170" x2="82" y2="120" stroke="#334155" stroke-width="1.5" stroke-dasharray="6 4" />
+          <line x1="224" y1="170" x2="318" y2="120" stroke="#334155" stroke-width="1.5" stroke-dasharray="6 4" />
+        </svg>
+      </div>
+      <div class="hero-copy">
+        <h2>Train like a defender</h2>
+        <p>
+          Work through the official SY0-701 domain mix (12% / 22% / 18% / 28% / 20%) with quick cards, scenario labs, and matching games.
+          Unofficial aid only — use CompTIA’s SY0-701 objectives and authorized materials for authoritative coverage.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#labs">Start a lab</a>
+          <a class="btn ghost" href="#domains">Browse domains</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="domains" class="section">
+      <h2 class="section-title">Domains</h2>
+      <p class="section-lead">Click a card to expand SY0-701-aligned study notes. Percentages follow the public exam blueprint; icons are decorative.</p>
+      <div class="domain-grid" id="domainCards"></div>
+    </section>
+
+    <section id="labs" class="section section-alt">
+      <h2 class="section-title">Interactive labs</h2>
+      <p class="section-lead">Score resets when you reload. Wrong answers explain the “why.”</p>
+
+      <article class="lab" id="lab-scenario">
+        <header class="lab-head">
+          <span class="lab-badge">Lab 1</span>
+          <h3>Incident triage: what happens first?</h3>
+        </header>
+        <p class="lab-desc">You are the on-call analyst. Pick the best <em>first</em> step for each mini-scenario.</p>
+        <div id="scenarioLab" class="lab-body"></div>
+      </article>
+
+      <article class="lab" id="lab-match">
+        <header class="lab-head">
+          <span class="lab-badge">Lab 2</span>
+          <h3>Match the control to the story</h3>
+        </header>
+        <p class="lab-desc">Drag each control type onto the scenario that fits best. Drag-and-drop works best on a desktop browser; use Shuffle & reset if you want a new ordering.</p>
+        <div id="matchLab" class="lab-body match-lab"></div>
+      </article>
+
+      <article class="lab" id="lab-crypto">
+        <header class="lab-head">
+          <span class="lab-badge">Lab 3</span>
+          <h3>Crypto quick-fire</h3>
+        </header>
+        <p class="lab-desc">Answer fast: properties, attacks, and common algorithms.</p>
+        <div id="cryptoLab" class="lab-body"></div>
+      </article>
+    </section>
+
+    <section id="cheatsheet" class="section">
+      <h2 class="section-title">Visual cheat sheet</h2>
+      <div class="cheat-wrap">
+        <svg viewBox="0 0 520 280" class="cheat-svg" aria-labelledby="cheatTitle">
+          <title id="cheatTitle">CIA triad and common security layers</title>
+          <defs>
+            <linearGradient id="ciaA" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.35" />
+              <stop offset="100%" stop-color="#22d3ee" stop-opacity="0.05" />
+            </linearGradient>
+            <linearGradient id="ciaI" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.35" />
+              <stop offset="100%" stop-color="#a78bfa" stop-opacity="0.05" />
+            </linearGradient>
+            <linearGradient id="ciaC" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#34d399" stop-opacity="0.35" />
+              <stop offset="100%" stop-color="#34d399" stop-opacity="0.05" />
+            </linearGradient>
+          </defs>
+          <text x="20" y="36" fill="#f8fafc" font-size="20" font-family="Outfit, system-ui">CIA triad</text>
+          <polygon points="120,240 260,60 400,240" fill="none" stroke="#475569" stroke-width="2" />
+          <polygon points="120,240 260,60 190,240" fill="url(#ciaC)" stroke="#34d399" stroke-width="1.5" />
+          <polygon points="190,240 260,60 330,240" fill="url(#ciaI)" stroke="#a78bfa" stroke-width="1.5" />
+          <polygon points="330,240 260,60 400,240" fill="url(#ciaA)" stroke="#22d3ee" stroke-width="1.5" />
+          <text x="150" y="220" fill="#bbf7d0" font-size="14" font-family="Outfit, system-ui">Confidentiality</text>
+          <text x="232" y="220" fill="#ddd6fe" font-size="14" font-family="Outfit, system-ui">Integrity</text>
+          <text x="318" y="220" fill="#a5f3fc" font-size="14" font-family="Outfit, system-ui">Availability</text>
+          <text x="248" y="90" fill="#e2e8f0" font-size="13" font-family="JetBrains Mono, monospace">Balance risks</text>
+
+          <text x="20" y="130" fill="#94a3b8" font-size="13" font-family="JetBrains Mono, monospace">Layers</text>
+          <rect x="20" y="145" width="120" height="28" rx="6" fill="#1e293b" stroke="#334155" />
+          <text x="32" y="164" fill="#e2e8f0" font-size="12" font-family="JetBrains Mono, monospace">Policy</text>
+          <rect x="20" y="181" width="120" height="28" rx="6" fill="#1e293b" stroke="#334155" />
+          <text x="32" y="200" fill="#e2e8f0" font-size="12" font-family="JetBrains Mono, monospace">Physical</text>
+          <rect x="20" y="217" width="120" height="28" rx="6" fill="#1e293b" stroke="#334155" />
+          <text x="32" y="236" fill="#e2e8f0" font-size="12" font-family="Mono, monospace">Perimeter</text>
+
+          <rect x="160" y="145" width="120" height="28" rx="6" fill="#1e293b" stroke="#334155" />
+          <text x="172" y="164" fill="#e2e8f0" font-size="12" font-family="JetBrains Mono, monospace">Network</text>
+          <rect x="160" y="181" width="120" height="28" rx="6" fill="#1e293b" stroke="#334155" />
+          <text x="172" y="200" fill="#e2e8f0" font-size="12" font-family="JetBrains Mono, monospace">Host</text>
+          <rect x="160" y="217" width="120" height="28" rx="6" fill="#1e293b" stroke="#334155" />
+          <text x="172" y="236" fill="#e2e8f0" font-size="12" font-family="JetBrains Mono, monospace">Application</text>
+
+          <rect x="300" y="145" width="200" height="100" rx="10" fill="#0f172a" stroke="#22d3ee" stroke-opacity="0.4" />
+          <text x="316" y="172" fill="#22d3ee" font-size="13" font-family="Outfit, system-ui">Remember</text>
+          <text x="316" y="198" fill="#cbd5e1" font-size="12" font-family="JetBrains Mono, monospace">Least privilege</text>
+          <text x="316" y="218" fill="#cbd5e1" font-size="12" font-family="JetBrains Mono, monospace">Defense in depth</text>
+          <text x="316" y="238" fill="#cbd5e1" font-size="12" font-family="JetBrains Mono, monospace">Zero trust mindset</text>
+        </svg>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Built for offline study. Pair with official CompTIA SY0-701 learning tools and practice exams.</p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
